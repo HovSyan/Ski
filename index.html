@@ -6,7 +6,28 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header class="header">
+            <img class="logo" src="img/favicon.jpeg" alt="logo">
+            <h1 class="header-text">Shop</h1>
+        </header>
+        <main class="main">
+            <button class="starting-button" onclick="onStartButtonClick(event)">Start shopping</button>
+            <div id="items-wrapper">
+                <a class="item">
+                    <image src="https://cdn.shopify.com/s/files/1/0055/1809/8522/products/190310_OliveOil_CarsonMeyer_Lifestyle-63_7af032de-1b8c-468c-80cb-4021dee4c67f.jpg?v=1653070224"
+                           class="item-image"></image>
+                    <div class="item-description">
+                        <p class="item-name">Name: A</p>
+                        <p class="item-price">200$</p>
+                        <p class="item-status status-available">Status: Available</p>
+                        <button class="purchase-btn">Buy</button>
+                    </div>
+                </a>
+            </div>
+        </main>
         <script src="script/index.js"></script>
+        <script src="script/event-listeners.js"></script>
+        <script src="script/api.js"></script>
+        <script src="script/renderer.js"></script>
     </body>
 </html>
