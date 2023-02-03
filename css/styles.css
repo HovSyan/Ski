@@ -83,12 +83,30 @@ body {
 
 #items-wrapper {
     display: flex;
+    justify-content: space-between;
+    margin-top: 8rem;
 }
 
 .item {
     width: 20%;
-    transition: .5s;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+    animation: moveInRight;
+}
+
+@keyframes moveInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.item p {
+    min-height: 2.5rem;
 }
 
 .item:hover {
@@ -127,4 +145,13 @@ body {
     text-transform: uppercase;
     background-color: #E77777;
     cursor: pointer;
+}
+
+.purchase-btn:hover {
+    background-color: #dc4a4a;
+    box-shadow: 0 .4rem .8rem rgba(0, 0, 0, .2);
+}
+
+.purchase-btn:hover:active {
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, .2);
 }

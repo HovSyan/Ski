@@ -1,8 +1,8 @@
 const onStartButtonClick = (e) => {
     const element = e.target;
     fadeOutButton(element, 100);
-    createRippleElement(e.clientX, e.clientY);
-    handleStartClick();
+    createRippleElement(e.clientX, e.clientY)
+        .then(handleStartClick);
 }
 
 const fadeOutButton = (element, duration) => {
@@ -19,14 +19,18 @@ const fadeOutButton = (element, duration) => {
 }
 
 const createRippleElement = (x, y) => {
-    const span = document.createElement('span');
-    span.className = 'ripple';
-    span.style.top = y;
-    span.style.left = x;
-    span.style.transition = '2s';
-    document.body.appendChild(span);
+    return new Promise((resolve) => {
+        const span = document.createElement('span');
+        span.className = 'ripple';
+        span.style.top = y;
+        span.style.left = x;
+        span.style.transition = '1.5s';
+        document.body.appendChild(span);
 
-    setTimeout(() => {
-        document.body.removeChild(span);
-    }, 2000)
+        setTimeout(() => {
+            document.body.removeChild(span);
+            resolve()
+        }, 1000)
+    })
+
 }
