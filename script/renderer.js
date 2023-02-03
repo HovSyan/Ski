@@ -1,13 +1,32 @@
-const itemsWrapper = document.getElementById('items-wrapper');
+const sections = {};
 
-const renderItem = (item, index) => {
+const getSection = (category) => {
+    if(sections[category]) {
+        return sections[category];
+    }
+
+    sections[category] = document.createElement('section');
+    sections[category].id = 'category';
+    sections[category].className = 'items-section';
+    sections[category].innerHTML = `<h2 class="section-title">${category}</h2>`;
+    document.querySelector('#items-wrapper').appendChild(sections[category]);
+
+    return sections[category];
+}
+
+const renderItem = (item) => {
     const a = document.createElement('a');
+    const section = getSection(item.category);
 
     a.appendChild(createItemImage(item.image, item.name));
     a.appendChild(createItemDescription(item));
-    // a.style.transition = (index + 1) * 1000 + 's';
+    a.animate([
+        { transform: 'translateX(100%)', opacity: '0'},
+        { transform: 'translateX(0)', opacity: '1'}
+    ], {duration: 300, delay: section.children.length * 300, fill: 'backwards', easing: 'ease-out'})
     a.className = 'item';
-    itemsWrapper.appendChild(a);
+    section.appendChild(a);
+    section.querySelector('.section-title').textContent = `${item.category} (${section.children.length - 1})`;
 }
 
 const createItemImage = (src, alt) => {

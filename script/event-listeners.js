@@ -30,7 +30,7 @@ const createRippleElement = (x, y) => {
         setTimeout(() => {
             document.body.removeChild(span);
             resolve()
-        }, 1000)
+        }, 500)
     })
 
 }
