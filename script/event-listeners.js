@@ -32,5 +32,8 @@ const createRippleElement = (x, y) => {
             resolve()
         }, 500)
     })
+}
 
+const onByClick = (itemDivElement, itemId) => {
+    handleBuyClick(itemDivElement, itemId);
 }
