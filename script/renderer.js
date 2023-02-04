@@ -68,6 +68,7 @@ const updateItemStatus = (divElement, item) => {
         pStatus.classList.add('status-available');
         pStatus.classList.remove('status-unavailable');
     } else {
+        divElement.querySelector('button').remove();
         pStatus.classList.remove('status-available');
         pStatus.classList.add('status-unavailable');
     }
