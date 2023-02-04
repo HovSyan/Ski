@@ -61,14 +61,19 @@ const getStatusSpan = (status) => {
     return p;
 }
 
-const updateItemStatus = (divElement) => {
+const updateItemStatus = (divElement, item) => {
     const pStatus = divElement.querySelector('.item-status');
-    pStatus.innerText = `Status: unavailable`;
-    p.classList.remove('status-available');
-    p.classList.add('status-unavailable');
+    pStatus.innerText = item.status ? 'Status: available' : 'Status: unavailable';
+    if(item.status) {
+        pStatus.classList.add('status-available');
+        pStatus.classList.remove('status-unavailable');
+    } else {
+        pStatus.classList.remove('status-available');
+        pStatus.classList.add('status-unavailable');
+    }
 }
 
-const alertError = () => {
+const alertError = (error) => {
     const errorPanel = document.querySelector('#error-panel');
     errorPanel.innerText = 'Something went wrong!';
     errorPanel.style.display = 'block';
@@ -77,4 +82,5 @@ const alertError = () => {
         errorPanel.classList.remove('error-animation');
         errorPanel.style.display = 'none';
     }, 15000);
+    console.error(error);
 }

@@ -9,13 +9,13 @@ const requestItems = () => {
 const buy = (itemId) => {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.setRequestHeader('Content-type', 'application/json');
         xhr.open("PUT", baseURL + '/purchase?id=' + itemId, true);
+        xhr.setRequestHeader('Content-type', 'application/json');
 
         // function execute after request is successful
         xhr.onreadystatechange = function (e) {
-            if (this.readyState === 4 && this.status === 200) {
-                resolve(e)
+            if (this.status === 200) {
+                e.srcElement.response && resolve(JSON.parse(e.srcElement.response))
             } else {
                 reject(e);
             }

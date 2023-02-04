@@ -6,8 +6,8 @@ const handleStartClick = () => {
 
 const handleBuyClick = (itemDivElement, itemId) => {
     buy(itemId)
-        .then(() => {
-            updateItemStatus(itemDivElement)
+        .then((item) => {
+            updateItemStatus(itemDivElement, item)
         })
         .catch(alertError)
 }
